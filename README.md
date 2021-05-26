@@ -1,2 +1,2 @@
 # Transaction-Management
- It's an open source flask app anyone can use this
+ It's an open source flask app for transaction management system anyone can use this
