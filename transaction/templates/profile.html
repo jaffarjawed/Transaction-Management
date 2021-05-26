@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block head%}
+<title> Profile Page </title>
+{% endblock %}
+{% block body %}
+
+
+<div class="row" >
+	<div class="col-4"></div>
+	<div class="col">
+		<div class="card" style="width: 18rem;">
+			<img class="card-img-top" src="{{url_for('static', filename = '/Images/user.png')}}" alt="Card image cap">
+			<div class="card-body">
+				<h5 class="card-title">{{current_user.firstname}} {{current_user.lastname}}</h5>
+				
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">{{current_user.username}}</li>
+				<li class="list-group-item">{{current_user.email}}</li>
+				<li class="list-group-item">{{current_user.date}}</li>
+			</ul>
+			<div class="card-body">
+				<button  class="btn btn-primary buttonpass"><a class = "password" href="{{url_for('changepassword')}}">Change Password</a</button>
+			</div>
+		</div>
+	</div>
+	<div class="col-4"></div>
+</div>
+{% endblock %}

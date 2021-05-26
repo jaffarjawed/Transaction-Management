@@ -1,0 +1,127 @@
+		{% extends 'base.html' %}
+		{% block head%}
+		<title> Transaction Page </title>
+		{% endblock %}
+		{% block body %}
+
+		<h1 style="text-align: center;"> Enter your transactions details</h1>
+
+		<div class="form">
+			<form class="row g-3" action="home", method="POST">
+				<div class="col-md-6">
+					<label for="name" class="form-label">Name</label>
+					<input type="text" class="form-control"  name="name" required>
+				</div>
+				<div class="col-md-6">
+					<label for="cardnumber" class="form-label">Card Number</label>
+					<input type="Number" class="form-control" name="cardnumber" required>
+				</div>
+				<div class="col-3">
+					<label for="cardtype" class="form-label">Card Type</label>
+					<select name="cardtype" class="form-select" required>
+						<option selected>Adhaar Card</option>
+						<option>ATM Card</option>
+					</select>
+				</div>
+				<div class="col-3">
+					<label for="withdrawal" class="form-label">Withdrawal Balance</label>
+					<input type="Number" class="form-control" name="withdrawal" required>
+				</div>
+				<div class="col-3">
+					<label for="remaining" class="form-label">Remaining Balance</label>
+					<input type="Number" class="form-control" name="remaining" required>
+				</div>
+				<div class="col-3">
+					<label for="walletbalance" class="form-label">Wallet Balance</label>
+					<input type="Number" class="form-control" name="walletbalance" required>
+				</div>
+
+				<div class="col-12">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" name="gridCheck" required>
+						<label class="form-check-label" for="gridCheck">
+							Ready to Proceed
+						</label>
+					</div>
+				</div>
+				<div class="col-12">
+					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="Reset" class="btn btn-primary">Reset</button>
+				</div>
+			</form>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-9">
+				<h1 style="text-align: left;"> Transactions Details</h1>
+			</div>
+			<div class="col-3">
+				<div class="form">
+				<form class="search" action="/search", method="POST">
+					<input type="text" placeholder="Search" name="search" required>
+					<button type="submit"><i class="fa fa-search"></i></button>
+				</form>
+			</div>
+			</div>
+		</div>
+
+		<div>
+			<table class="table caption-top">
+				<!--  <caption>List of users</caption> -->
+				<thead>
+					<tr>
+						<th scope="col">Transation Date</th>
+						<th scope="col">Name</th>
+						<th scope="col">Card Number</th>
+						<th scope="col">Card Type</th>
+						<th scope="col">Amount Withdrawal</th>
+						<th scope="col">Amount Remaining</th>
+						<th scope="col">Wallet Balance</th>
+						<th scope="col">Update</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for transaction in transactions %}
+					<tr>
+						<td> {{transaction.transaction_date}}</td>
+						<td> {{transaction.name}}</td>
+						<td> {{transaction.card_number}}</td>
+						<td> {{transaction.card_type}}</td>
+						<td> {{transaction.amount_withdrawal}}</td>
+						<td> {{transaction.amount_remaining}}</td>
+						<td> {{transaction.wallet_balance}}</td>
+						<td> <a href="/update/{{transaction.id}}"> Update </a></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+			<!-- <div>
+				<table>
+					<tr>
+						<th> Transation Date</th>
+						<th> Name </th>
+						<th> Card Number</th>
+						<th> Card Type</th>
+						<th> Amount Withdrawal</th>
+						<th> Amount Remaining</th>
+						<th>Wallet Balance</th>
+					</tr>
+
+					{% for transaction in transactions %}
+
+					<tr>
+						<td> {{transaction.transaction_date}}</td>
+						<td> {{transaction.name}}</td>
+						<td> {{transaction.card_number}}</td>
+						<td> {{transaction.card_type}}</td>
+						<td> {{transaction.amount_withdrawal}}</td>
+						<td> {{transaction.amount_remaining}}</td>
+						<td> {{transaction.wallet_balance}}</td>
+					</tr>
+
+					{% endfor %}
+				</table>
+			</div> -->
+
+			{% endblock %}

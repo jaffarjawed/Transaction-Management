@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block head%}
+<title> Transaction Details </title>
+{% endblock %}
+{% block body %}
+
+<h1 style="text-align: center;"> Transaction List</h1>
+
+
+<div>
+    <table class="table caption-top">
+        <!--  <caption>List of users</caption> -->
+        <thead>
+            <tr>
+                <th scope="col">Transation Date</th>
+                <th scope="col">Name</th>
+                <th scope="col">Card Number</th>
+                <th scope="col">Card Type</th>
+                <th scope="col">Amount Withdrawal</th>
+                <th scope="col">Amount Remaining</th>
+                <th scope="col">Wallet Balance</th>
+                <th scope="col">Update</th>
+                <th scope="col">Add</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td> {{transaction.transaction_date}}</td>
+                <td> {{transaction.name}}</td>
+                <td> {{transaction.card_number}}</td>
+                <td> {{transaction.card_type}}</td>
+                <td> {{transaction.amount_withdrawal}}</td>
+                <td> {{transaction.amount_remaining}}</td>
+                <td> {{transaction.wallet_balance}}</td>
+                <td> <a href="/update/{{transaction.id}}"> Update </a></td>
+                <td> <a href="/add/{{transaction.id}}"> Add </a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    
+    {% endblock %}

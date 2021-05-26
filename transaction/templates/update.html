@@ -1,0 +1,58 @@
+		{% extends 'base.html' %}
+		{% block head%}
+		<title> Update Your Transaction </title>
+ 		{% endblock %}
+		{% block body %}
+		   
+		   <h1 style="text-align: center;"> Update your transactions details</h1>
+		   
+		   	<div class="form">
+				<form class="row g-3" action="/update/{{transaction.id}}", method="POST">
+				  <div class="col-md-6">
+				    <label for="name" class="form-label">Name</label>
+				    <input type="text" class="form-control"  name="name" value="{{transaction.name}}" required>
+				  </div>
+				  <div class="col-md-6">
+				    <label for="cardnumber" class="form-label">Card Number</label>
+				    <input type="text" class="form-control" name="cardnumber" value="{{transaction.card_number}}" required>
+				  </div>
+				  <div class="col-3">
+				    <label for="cardtype" class="form-label">Card Type</label>
+				    <select name="cardtype" class="form-select" required>
+				     <option selected>Adhaar Card</option>
+				     <option>ATM Card</option>
+				    </select>
+				  </div>
+				  <div class="col-3">
+				    <label for="withdrawal" class="form-label">Withdrawal Balance</label>
+				    <input type="text" class="form-control" name="withdrawal" value="{{transaction.amount_withdrawal}}" required>
+				  </div>
+				  <div class="col-3">
+				    <label for="remaining" class="form-label">Remaining Balance</label>
+				    <input type="text" class="form-control" name="remaining" value="{{transaction.amount_remaining}}" required>
+				  </div>
+				   <div class="col-3">
+				    <label for="walletbalance" class="form-label">Wallet Balance</label>
+				    <input type="text" class="form-control" name="walletbalance" value="{{transaction.wallet_balance}}" required>
+				  </div>
+				 
+				  <div class="col-12">
+				    <div class="form-check">
+				      <input class="form-check-input" type="checkbox" name="gridCheck" required>
+				      <label class="form-check-label" for="gridCheck">
+				        Ready to Proceed
+				      </label>
+				    </div>
+				  </div>
+				  <div class="col-12">
+				    <button type="submit" class="btn btn-primary">Submit</button>
+				  </div>
+				</form>
+
+			</div>
+
+
+				
+			
+
+		{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block head%}
+<title> User's List </title>
+{% endblock %}
+{% block body %}
+
+<h1 style="text-align: center;"> Registered User List</h1>
+
+
+<div>
+    <table class="table caption-top">
+        <!--  <caption>List of users</caption> -->
+        <thead>
+            <tr>
+                <th scope="col">Transation Date</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">user_id</th>
+                <th scope="col">View User Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for userlist in userlist %}
+            <tr>
+                <td> {{userlist.date}}</td>
+                <td> {{userlist.username}}</td>
+                <td> {{userlist.email}}</td>
+                <td>{{userlist.id}}</td>
+                <td> <a href="/viewuser/{{userlist.id}}"> View Users </a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    
+    {% endblock %}
